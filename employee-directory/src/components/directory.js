@@ -9,7 +9,10 @@ class Directory extends Component {
 
                     <tr>
                         <td>Name</td>
-                        <td>Title</td>
+                        <td>Job Title</td>
+                        <td>Department</td>
+                        <td>Phone Number</td>
+                        <td>Email Address</td>
                     </tr>
 
                 </tbody>
