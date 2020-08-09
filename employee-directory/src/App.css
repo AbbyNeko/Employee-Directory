@@ -7,8 +7,18 @@
   pointer-events: none;
 }
 
+form {
+  margin:1em;
+}
+
+input, select {
+  margin-left:0.5em;
+  margin-right:0.5em;
+}
+
 h1 {
   text-align: center;
+  margin:1.2em;
 }
 
 table, td, th {

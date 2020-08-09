@@ -2,24 +2,24 @@ import React from "react";
 
 const Directory = ({onClick, allEmployees}) => {
 
+        let index = 0;
         const listedEmployees = allEmployees.map((employee) => 
 
-            <tr>
+            <tr key={index++}>
                 <td>{employee.name}</td>
                 <td>{employee.title}</td>
                 <td>{employee.department}</td>
                 <td>{employee.phone}</td>
                 <td>{employee.email}</td>
             </tr>
-        
+
         );
   
         return (
             <table>
                 <tbody>
-
                     <tr>
-                        <th>Name<span class="sort-by-name" onClick={onClick}><i class="fas fa-angle-down"></i></span></th>
+                        <th>Name<span className="sort-by-name" onClick={onClick}><i className="fas fa-angle-down"></i></span></th>
                         <th>Job Title</th>
                         <th>Department</th>
                         <th>Phone Number</th>

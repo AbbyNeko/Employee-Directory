@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react';
 import './App.css';
-import Directory from './components/directory';
+import Form from './components/Form';
 
 function App() {
 
@@ -79,18 +79,30 @@ function App() {
 
   const [allEmployees, dispatch] = useReducer((state, action) => {
 
-    if(action === "sortByName") {
+    if(action.type === "sortByName") {
 
-      return state;
+      return state.sort(function(a, b) {
+        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      });
 
-    }
+    } 
 
   }, employees);
 
   return (
     <div className="container">
         <h1>Employee Directory</h1>
-         <Directory allEmployees={allEmployees} onClick={() => dispatch("sortByName")}/>
+        <Form allEmployees={allEmployees} onClick={()=> dispatch({type:"sortByName"})}/>
     </div>
   );
 }
