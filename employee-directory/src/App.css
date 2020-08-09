@@ -11,6 +11,12 @@ form {
   margin:1em;
 }
 
+select {
+  padding:4px;
+  padding-left:8px;
+  padding-right:8px;
+}
+
 input, select {
   margin-left:0.5em;
   margin-right:0.5em;
@@ -40,7 +46,6 @@ table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  width:90%;
 }
 
  td,  th {
