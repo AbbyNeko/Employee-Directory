@@ -80,6 +80,8 @@ const Filter = () => {
     const FilterValue = useRef();
 
     const [currentEmployees, setCurrentEmployees] = useState(allEmployees);
+    const [order, setOrder] = useState("none");
+
 
     const handleSubmit = event => {
 
@@ -103,24 +105,49 @@ const Filter = () => {
         event.preventDefault();
         //console.log("sorting")
 
-        const newEmployeeArr = allEmployees.sort(function(a, b) {
-            var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-          
-            // names must be equal
-            return 0;
-          });
+        let newEmployeeArr = allEmployees;
 
-          setCurrentEmployees(newEmployeeArr);
+         if(order === "sorted"){
 
-          console.log(`new employee arr - ${JSON.stringify(newEmployeeArr)}`)
+            newEmployeeArr.sort(function(a, b) {
+                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                  return 1;
+                }
+                if (nameA > nameB) {
+                  return -1;
+                }
+              
+                // names must be equal
+                return 0;
+            });
 
+            setOrder("reverse-sort");
+
+        } else {
+
+
+                newEmployeeArr.sort(function(a, b) {
+                    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                      return -1;
+                    }
+                    if (nameA > nameB) {
+                      return 1;
+                    }
+                  
+                    // names must be equal
+                    return 0;
+                });
+    
+                setOrder("sorted");
+    
+        }
+
+        setCurrentEmployees([...newEmployeeArr]);
+         
     }
 
         return (
